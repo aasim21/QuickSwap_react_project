@@ -1,0 +1,29 @@
+.main_container{
+    width:100vw;
+    height:100vh;
+    padding:1rem;
+    padding-top:0;
+    overflow:hidden;
+    overflow-y:scroll;
+}
+
+.main_container_child{
+    width:100%;
+    height:auto;
+    /* border:1px solid black; */
+    padding:1rem 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.child_cont_heading{
+    font-size:2rem;
+    font-weight:770;
+    color:#03045e;
+}
+
+.items_div{
+    display:flex;
+    margin-top:1rem;
+    /* border:1px solid black; */
+    flex-wrap: wrap;
+    gap:2rem;
+}

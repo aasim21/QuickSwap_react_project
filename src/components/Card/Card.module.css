@@ -1,0 +1,22 @@
+.title{
+    font-size: 1.3rem;
+    font-weight:700;
+    line-height: 1.5rem;
+}
+
+.description{
+    font-weight: 500;
+    line-height:1.3rem;
+    margin-top:1.3rem;
+}
+
+.price span{
+    font-size:1.3rem;
+    font-weight:600;
+    margin-right:0.25rem;
+}
+
+.price{
+    font-size:1.1rem;
+    font-weight:500;
+}

@@ -1,0 +1,9 @@
+.main_container{
+    width:100vw;
+    background-color: #03045e;
+    height:4rem;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    gap:1.3rem;
+}
