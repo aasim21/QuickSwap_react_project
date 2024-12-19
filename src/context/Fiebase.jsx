@@ -57,14 +57,14 @@ const handleCreateNewUser = async (userEmail, userId, userDisplayName) => {
     userId,
     userDisplayName,
   });
-  console.log(res);
+  // console.log(res);
 };
 
 //Handling Logging in a User
 const LoginUser = (email, password) => {
   signInWithEmailAndPassword(firebaseAuth, email, password)
     .then((result) => {
-      console.log(result);
+      // console.log(result);
     })
     .catch((err) => {
       console.log(err);
@@ -74,7 +74,7 @@ const LoginUser = (email, password) => {
 //Handling Signout a User
 const signOutUser = () => {
   signOut(firebaseAuth).then((val) => {
-    console.log("Signed out", val);
+    // console.log("Signed out", val);
   });
 };
 
@@ -107,7 +107,7 @@ const FirebaseProvider = ({ children }) => {
     });
   }, []);
   const isLoggedIn = user ? true : false;
-  console.log("isLoggedIn", isLoggedIn);
+  // console.log("isLoggedIn", isLoggedIn);
   //handling New Listing
   const handleCreateNewListing = async (title, desc, price, imageURL) => {
     return await addDoc(collection(fireStore, "items"), {
@@ -167,7 +167,7 @@ const FirebaseProvider = ({ children }) => {
       status: "pending",
       itemID: itemID,
     });
-    console.log(result);
+    // console.log(result);
   };
   //Fetch your placed orders
   const getPlacedOrders = async (userID) => {
@@ -183,7 +183,7 @@ const FirebaseProvider = ({ children }) => {
     const userDbId = await getUserDBId(userID);
     const docRef = doc(fireStore, "users", userDbId, "placed_orders", itemId);
     const result = await deleteDoc(docRef);
-    console.log(result);
+    // console.log(result);
   };
 
   //Handling an order Rejection
@@ -253,7 +253,7 @@ const FirebaseProvider = ({ children }) => {
     const result = await updateDoc(docRef,{
       isSold:true
     })
-    console.log(result);
+    // console.log(result);
   }
   //Fetch Your Listed items
   const fetchMyListItems = async (userId) => {

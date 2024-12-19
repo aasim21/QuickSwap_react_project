@@ -14,7 +14,7 @@ const RegisterPage = () => {
   //function to handle form submission
   const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log("SigningUp a user");
+    // console.log("SigningUp a user");
     const result = await fireBase.signingupUser(
       emailRef.current.value,
       passRef.current.value
@@ -24,7 +24,7 @@ const RegisterPage = () => {
   useEffect(()=>{
     if(fireBase.user){
         //navigate to home
-        navigate("/home");
+        navigate("/");
     }
 },[fireBase.user]);
 

@@ -27,7 +27,7 @@ const LoginPage = () => {
 useEffect(()=>{
     if(fireBase.isLoggedIn){
         //navigate to home
-        navigate("/home");
+        navigate("/");
     }
 },[fireBase.isLoggedIn]);
 

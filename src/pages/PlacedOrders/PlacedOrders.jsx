@@ -10,7 +10,7 @@ import { useFirebase } from "../../context/Fiebase";
 //Functional Component
 const PlacedOrdersPage = () => {
   const fireBase = useFirebase();
-  console.log("Placed Orders mounted");
+  // console.log("Placed Orders mounted");
   useEffect(() => {
     if(fireBase.isLoggedIn){
       fireBase.getPlacedOrders(fireBase.user.uid);

@@ -17,7 +17,7 @@ const Nav = () => {
       <div className={styles.nav_items}>
         <span>
           <NavLink
-            to="/home"
+            to="/"
             className={styles.nav_item}
             style={({ isActive }) => ({
               color: isActive ? "#FBA0e3" : "#03045e",
