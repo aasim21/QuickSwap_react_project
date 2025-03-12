@@ -23,12 +23,8 @@ const HomePage = () => {
         setItems(items.docs);
       });
     }
-  }, []);
-  useEffect(() => {
-    // console.log(fireBase.isLoggedIn);
-    //Checking User Logging in
-    if (!fireBase.isLoggedIn) {
-      navigate("/login");
+    else{
+      navigate("/auth/login");
     }
   }, [fireBase.isLoggedIn]);
   return (

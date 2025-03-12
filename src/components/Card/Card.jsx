@@ -12,11 +12,11 @@ const CardComp = (props) => {
   const navigate = useNavigate();
   return(
     <>
-    <Card style={{ width: '20rem' }}>
+    <Card style={{ width: '20rem', display:"flex" }}>
       <Card.Img style={{width:"100%",
       height:"18rem"
       }} variant="top" src={props.imageURL}/>
-      <Card.Body>
+      <Card.Body style = {{display:"flex", flexDirection:"column"}}>
         <Card.Title className = {styles.title}>{props.title}</Card.Title>
         <Card.Text className = {styles.description}>
           {props.desc}

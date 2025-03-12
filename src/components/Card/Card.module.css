@@ -1,13 +1,22 @@
+
 .title{
     font-size: 1.3rem;
     font-weight:700;
     line-height: 1.5rem;
+    flex:1;
 }
 
 .description{
     font-weight: 500;
     line-height:1.3rem;
     margin-top:1.3rem;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2; 
+
+-webkit-box-orient: vertical;
 }
 
 .price span{

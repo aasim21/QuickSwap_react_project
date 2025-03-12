@@ -1,0 +1,87 @@
+.mainContainer{
+    height:100vh;
+    width:100vw;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.childCont{
+    width:390px;
+    border-radius: 1rem;
+    box-shadow:0px 15px 20px rgba(0,0,0,0.1);
+    background:#fff;
+    padding:2rem;  
+}
+
+.heading{
+    width:100%;
+    font-size:2.2rem;
+    text-align:center;
+    font-weight:630;
+    color:#000;
+    font-family: 'Poppins', sans-serif;
+}
+
+.slider{
+    width:100%;
+    display:flex;
+    height:50px;
+    border:1px solid lightgray;
+    margin:30px 0 10px 0;
+    border-radius: 1rem;
+}
+
+
+.label{
+    width:50%;
+    height:100%;
+    border-radius: 1rem;
+    text-align: center;
+    place-self:center;
+    font-size:1.1rem;
+    font-weight:500;
+    color:#000;
+    cursor:pointer;
+    line-height: 3rem;
+}
+
+.background{
+    background: -webkit-linear-gradient(left, #003366, #004080, #0059b3, #0073e6);
+    color: #fff;
+}
+
+.formCont{
+    width:100%;
+}
+
+.field{
+    width:100%;
+    height:3.2rem;
+    margin-top:20px;
+    position:relative;
+}
+
+input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 15px;
+    border-radius: 15px;
+    border: 1px solid lightgrey;
+    border-bottom-width: 2px;
+    font-size: 17px;
+}
+
+.btn{
+    font-size:1.1rem;
+    font-weight:500;
+}
+
+.icon{
+    color:#000;
+    position: absolute;
+    right:8px;
+    top:17px;
+    cursor:pointer;
+}

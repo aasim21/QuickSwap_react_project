@@ -61,7 +61,16 @@ const Nav = () => {
         </span>
       </div>
       <div className={styles.auth_container}>
-        <span>
+        {fireBase.isLoggedIn ? (<> <span>
+          <NavLink
+          to="/auth/login"
+            onClick={fireBase.signOutUser}
+            className={styles.nav_item}
+            style={{ color: "#03045e" }}
+          >
+            SignOut
+          </NavLink>
+        </span></>) : (<><span>
           <NavLink
             to="/login"
             className={styles.nav_item}
@@ -78,20 +87,13 @@ const Nav = () => {
           >
             SignUp
           </NavLink>
-        </span>
-        <span>
-          <NavLink
-          to="/login"
-            onClick={fireBase.signOutUser}
-            className={styles.nav_item}
-            style={{ color: "#03045e" }}
-          >
-            SignOut
-          </NavLink>
-        </span>
+        </span></>)}
       </div>
     </div>
   );
 };
+
+
+
 
 export default Nav;
