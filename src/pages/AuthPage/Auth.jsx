@@ -1,16 +1,11 @@
 import styles from "./Auth.module.css";
 
-//icons
-import { FaEyeSlash } from "react-icons/fa";
-import { FaRegEye } from "react-icons/fa";
-
 //Hooks
 import { useFirebase } from "../../context/Fiebase";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { NavLink, Outlet, useLocation, useNavigate, Form } from "react-router-dom";
 
 const Auth = () => {
-  const [showPassword, setShowPassword] = useState(false);
   const { pathname } = useLocation();
 
   //Calling hooks
@@ -32,6 +27,9 @@ const Auth = () => {
     if (fireBase.isLoggedIn) {
       //navigate to home
       navigate("/");
+    }
+    else{
+      navigate("/auth/login");
     }
   }, [fireBase.isLoggedIn]);
 
@@ -71,29 +69,7 @@ const Auth = () => {
         </div>
         <div className={styles.formCont}>
           <form onSubmit = {handleSubmit}> 
-            <div className={styles.field}>
-              <input type="email" placeholder="Email Address" ref = {emailRef} required></input>
-            </div>
-            <div className={styles.field}>
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                ref= {passRef}
-                required
-              ></input>
-              {showPassword ? (
-                <FaEyeSlash
-                  className={styles.icon}
-                  onClick={() => setShowPassword(false)}
-                />
-              ) : (
-                <FaRegEye
-                  className={styles.icon}
-                  onClick={() => setShowPassword(true)}
-                />
-              )}
-            </div>
-            <Outlet context={confirmPassRef}/>
+            <Outlet context={{confirmPassRef, emailRef, passRef}}/>
             <div className={styles.field}>
               <input
                 className={`${styles.background} ${styles.btn}`}
