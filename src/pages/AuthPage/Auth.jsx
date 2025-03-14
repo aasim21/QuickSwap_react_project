@@ -3,7 +3,13 @@ import styles from "./Auth.module.css";
 //Hooks
 import { useFirebase } from "../../context/Fiebase";
 import { useEffect, useRef } from "react";
-import { NavLink, Outlet, useLocation, useNavigate, Form } from "react-router-dom";
+import {
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+  Form,
+} from "react-router-dom";
 
 const Auth = () => {
   const { pathname } = useLocation();
@@ -13,22 +19,29 @@ const Auth = () => {
   const emailRef = useRef();
   const passRef = useRef();
   const confirmPassRef = useRef();
+  const firstName = useRef();
+  const lastName = useRef();
   const navigate = useNavigate();
 
   //function to handle form submission
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    pathname == "/auth/signup" ? (passRef.current.value === confirmPassRef.current.value ? await fireBase.signingupUser(
-        emailRef.current.value,
-        passRef.current.value) : alert("Password doesn't match")) : ( await fireBase.LoginUser(emailRef.current.value, passRef.current.value));
-
+    pathname == "/auth/signup"
+      ? passRef.current.value === confirmPassRef.current.value
+        ? await fireBase.signingupUser(
+            emailRef.current.value,
+            passRef.current.value,
+            firstName.current.value,
+            lastName.current.value
+          )
+        : alert("Password doesn't match")
+      : await fireBase.LoginUser(emailRef.current.value, passRef.current.value);
   };
   useEffect(() => {
     if (fireBase.isLoggedIn) {
       //navigate to home
       navigate("/");
-    }
-    else{
+    } else {
       navigate("/auth/login");
     }
   }, [fireBase.isLoggedIn]);
@@ -68,8 +81,16 @@ const Auth = () => {
           </NavLink>
         </div>
         <div className={styles.formCont}>
-          <form onSubmit = {handleSubmit}> 
-            <Outlet context={{confirmPassRef, emailRef, passRef}}/>
+          <form onSubmit={handleSubmit}>
+            <Outlet
+              context={{
+                confirmPassRef,
+                emailRef,
+                passRef,
+                firstName,
+                lastName,
+              }}
+            />
             <div className={styles.field}>
               <input
                 className={`${styles.background} ${styles.btn}`}
@@ -83,6 +104,5 @@ const Auth = () => {
     </div>
   );
 };
-
 
 export default Auth;

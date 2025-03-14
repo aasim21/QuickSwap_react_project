@@ -41,23 +41,24 @@ const fireStore = getFirestore(firebaseApp);
 export const useFirebase = () => useContext(FirebaseContext);
 
 //Handling Signing Up a User
-const signingupUser = (email, password) => {
+const signingupUser = (email, password, firstName, lastName) => {
   createUserWithEmailAndPassword(firebaseAuth, email, password).then(
     ({ user }) => {
-      handleCreateNewUser(user.email, user.uid, user.displayName);
+      handleCreateNewUser(user.email, user.uid, firstName, lastName);
     }
   );
 };
 
 //Creating dataBase for a User after signing up
-const handleCreateNewUser = async (userEmail, userId, userDisplayName) => {
+const handleCreateNewUser = async (userEmail, userId, userfirstName, userlastName) => {
   const collectionRef = collection(fireStore, "users");
   const res = await addDoc(collectionRef, {
     userEmail,
     userId,
-    userDisplayName,
+    userfirstName,
+    userlastName
   });
-  // console.log(res);
+  // console.log(userEmail, userId, userfirstName, userlastName);
 };
 
 //Handling Logging in a User
@@ -94,6 +95,7 @@ const getItemById = async (id) => {
 };
 
 //Functional Component starts here
+
 const FirebaseProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [placed_orders, setPlaced_orders] = useState(null);
@@ -101,7 +103,7 @@ const FirebaseProvider = ({ children }) => {
   //Handling User State
   useEffect(() => {
     onAuthStateChanged(firebaseAuth, (user) => {
-      console.log("onAuth initiated");
+      // console.log("onAuth initiated");
       if (user) setUser(user);
       else setUser(null);
     });

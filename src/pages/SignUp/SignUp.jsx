@@ -10,19 +10,21 @@ import { useOutletContext } from "react-router-dom";
 
 //Functional Component
 const SignUp = () => {
-  const { confirmPassRef, emailRef, passRef } = useOutletContext();
+  const { confirmPassRef, emailRef, passRef, firstName, lastName } = useOutletContext();
   const [showPassword, setShowPassword] = useState(false);
   return (
     <>
       <div className={`${styles.field} ${styles.flex}`}>
         <input className={`${styles.nameContainer} ${styles.marginRight}`}
           type="text"
+          ref = {firstName}
           placeholder="First Name"
           required
         ></input>
          <input className={styles.nameContainer}
           type="text"
           placeholder="Last Name"
+          ref = {lastName}
           required
         ></input>
       </div>
