@@ -6,29 +6,15 @@
     gap:2rem;
 }
 
-
-
-
-
-
-
-/* .main_container{
-    width:100vw;
-    height:100vh;
-    padding:1rem;
-    padding-top:0;
+@media screen and (max-width:550px) {
+    .orders_div{
+        gap:1rem;
+    }
 }
 
-.main_container_child{
-    width:100%;
-    height:auto;
-    padding:1rem 1.5rem;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    border:1px solid black;
-}
 
-.child_cont_heading{
-    font-size:2rem;
-    font-weight:770;
-    color:#03045e;
-} */
+
+
+
+
+

@@ -23,24 +23,29 @@ const ItemDetail = () => {
   }, []);
   useEffect(() => {
     if (!fireBase.isLoggedIn) {
-      console.log("useEffect under ItemDetails with condition");
-      navigate("/login");
+      // console.log("useEffect under ItemDetails with condition");
+      navigate("/auth/login");
     }
   }, [fireBase.isLoggedIn]);
 
   //Handling Buy Now
   const handleBuyNow = async () => {
-     const hasPurchased = await fireBase.checkingConstraint(params.itemID, fireBase.user.uid);
-    if(!hasPurchased){
+    const hasPurchased = await fireBase.checkingConstraint(
+      params.itemID,
+      fireBase.user.uid
+    );
+    if (!hasPurchased) {
       const result = await fireBase.placeOrder(params.itemID);
       console.log("Order Placed", result);
-      await fireBase.handleNewPlacedOrder(data, fireBase.user.uid, params.itemID);
+      await fireBase.handleNewPlacedOrder(
+        data,
+        fireBase.user.uid,
+        params.itemID
+      );
       navigate("/items/placedorders");
-    }
-    else(alert("You have already requested a purchase on this item."));
+    } else alert("You have already requested a purchase on this item.");
   };
-  console.log("Component-re rendered");
-  console.log(data);
+  // console.log(data);
   if (data == null) return <h1>Loading....</h1>;
 
   return (
@@ -53,16 +58,16 @@ const ItemDetail = () => {
             src={data.imageURL}
             alt="Item Photo"
           />
-          {
-            data.userID !== fireBase.user.uid &&
-            <Button
-              onClick={handleBuyNow}
-              className={styles.buy_btn}
-              variant="primary"
-            >
-              Buy Now
-            </Button>
-          }
+          <div className={styles.btn_container}>
+            {data.userID !== fireBase.user.uid && data.isSold !== true && (
+              <button
+                onClick={handleBuyNow}
+                className={styles.buy_btn}
+              >
+                Buy Now
+              </button>
+            )}
+          </div>
         </div>
         <div className={styles.info_container}>
           <h3 className={styles.title}>{data.title}</h3>
@@ -77,11 +82,21 @@ const ItemDetail = () => {
               htmlFor="userEmail"
               style={{ fontSize: "1.1rem", fontWeight: "550" }}
             >
-              Seller Email:{" "}
+              Seller Email:
             </label>
             <p id="userEmail" className={styles.owner}>
               {data.userEmail}
             </p>
+          </div>
+           <div className={styles.btn_info_container}>
+            {data.userID !== fireBase.user.uid && data.isSold !== true && (
+              <button
+                onClick={handleBuyNow}
+                className={styles.buy_btn}
+              >
+                Buy Now
+              </button>
+            )}
           </div>
         </div>
       </div>

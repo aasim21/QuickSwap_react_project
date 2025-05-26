@@ -1,31 +1,119 @@
-
-.title{
-    font-size: 1.3rem;
-    font-weight:700;
-    line-height: 1.5rem;
-    flex:1;
+.main_container {
+  height: 450px;
+  width: 300px;
+  /* border: 1px solid black; */
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: #f6f6f6;
+}
+.child_container {
+  width: 100%;
+  height: 85%;
+}
+.img_container {
+  width: 100%;
+  height: 70%;
 }
 
-.description{
+img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+}
+.info_container {
+  width: 100%;
+  display: flex;
+  /* justify-content: space-between; */
+  margin-top: 1rem;
+  color: #03045e;
+}
+
+.descriptions {
+  flex: 1;
+}
+
+.product_title {
+  font-size: 1.3rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.desc {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #494a8b;
+  text-overflow: ellipsis;
+}
+.price_container {
+  text-align: right;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1.3rem;
+}
+.price {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.btn {
+  margin-bottom: 0.2rem;
+  border-radius: 0.6rem;
+  border: none;
+  padding: 0.7rem 1rem;
+  text-align: center;
+  font-size: 1.12rem;
+  font-weight: 500;
+  color: #f6f6f6;
+  background-color: #fba0e3;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 550px) {
+  .product_title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom:0;
+  }
+  .price_container {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: start;
+  }
+  .desc {
+    margin-top: 0.3rem;
+    font-size: 0.7rem;
     font-weight: 500;
-    line-height:1.3rem;
-    margin-top:1.3rem;
-    overflow: hidden;
-    text-overflow: ellipsis; 
-    display: -webkit-box;
+    -webkit-line-clamp: 2;
     line-clamp: 2;
-    -webkit-line-clamp: 2; 
+  }
 
--webkit-box-orient: vertical;
-}
-
-.price span{
-    font-size:1.3rem;
-    font-weight:600;
-    margin-right:0.25rem;
-}
-
-.price{
-    font-size:1.1rem;
-    font-weight:500;
+  .main_container {
+    height: 330px;
+    width: 47.5%;
+    padding: 0.8rem;
+  }
+  .btn {
+    padding: 0.4rem;
+    margin-bottom: 0;
+  }
+  .info_container{
+    margin-top: 0.8rem;
+  }
 }

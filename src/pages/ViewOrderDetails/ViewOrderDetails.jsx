@@ -23,7 +23,7 @@ const ViewOrderDetails = () => {
     // console.log(fireBase.isLoggedIn);
     //Checking User Logging in
     if (!fireBase.isLoggedIn) {
-      navigate("/login");
+      navigate("/auth/login");
     }
   }, [fireBase.isLoggedIn]);
 

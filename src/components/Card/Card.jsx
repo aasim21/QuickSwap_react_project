@@ -1,34 +1,35 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-
 //Hooks
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 //style
-import styles from "./Card.module.css"; 
+import styles from "./Card.module.css";
 
 //Functional Component
 const CardComp = (props) => {
   const navigate = useNavigate();
-  return(
-    <>
-    <Card style={{ width: '20rem', display:"flex" }}>
-      <Card.Img style={{width:"100%",
-      height:"18rem"
-      }} variant="top" src={props.imageURL}/>
-      <Card.Body style = {{display:"flex", flexDirection:"column"}}>
-        <Card.Title className = {styles.title}>{props.title}</Card.Title>
-        <Card.Text className = {styles.description}>
-          {props.desc}
-        </Card.Text>
-        <Card.Text className = {styles.price}>
-          <span>&#8377;</span>{props.price}
-        </Card.Text>
-        <Button onClick = {(e) => navigate(props.link)} variant="primary">View Details</Button>
-      </Card.Body>
-    </Card>
-    </>
+  // console.log(props);
+  return (
+    <div className={styles.main_container}>
+      <div className={styles.child_container}>
+        <div className={styles.img_container}>
+          <img src={props.imageURL} alt="image" />
+        </div>
+        <div className={styles.info_container}>
+          <div className={styles.descriptions}>
+            <h4 className={styles.product_title}>{props.title}</h4>
+            <p className={styles.desc}>{props.desc}</p>
+          </div>
+          <div className={styles.price_container}>
+            <p className={styles.price}>&#x20B9; {props.price}</p>
+          </div>
+        </div>
+      </div>
+      <button onClick={() => navigate(props.link)} className={styles.btn}>
+        View Details
+      </button>
+    </div>
   );
-}
+};
 
 export default CardComp;
+

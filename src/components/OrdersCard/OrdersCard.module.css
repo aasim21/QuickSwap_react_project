@@ -1,0 +1,61 @@
+.main_container{
+  width: 18rem;
+}
+
+.status_element_container {
+  padding: 0.15rem;
+  margin-top: 1rem;
+}
+
+.info_container{
+  height:57%;
+}
+.status_element {
+  padding: 0.3rem 0.8rem 0.4rem;
+  border: 1px solid #0ea046;
+  border-radius: 0.8rem;
+  background-color: #ecfbf2;
+  color: #0ea046;
+}
+
+.btns_container{
+  margin-top: 0.5rem;
+}
+.btns {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #ffff;
+  border: 0.5px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  margin-right: 1.3rem;
+  font-size: 1.2rem;
+}
+
+.accept_btn{
+    border-color: #10B751;
+    color:#10B751;
+    background-color: #E9FDF4;
+}
+
+.reject_btn{
+    border-color: #F67074;
+    color: #F67074;
+    background-color: #F7F5EE;
+}
+
+@media screen and (max-width:550px) {
+  .main_container{
+    width:46%;
+  }
+  .email{
+    font-size:0.8rem;
+  }
+  .btns_container{
+    margin-top: 1rem;
+  }
+}

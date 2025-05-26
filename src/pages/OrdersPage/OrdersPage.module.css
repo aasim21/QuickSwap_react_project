@@ -27,3 +27,20 @@
     flex-wrap: wrap;
     gap:2rem;
 }
+
+@media screen and (max-width:550px) {
+    .main_container{
+        padding:0;
+    }
+    .main_container_child{
+        padding:1rem;
+    }
+
+    .items_div{
+        gap:1rem;
+    }
+}
+
+@media screen and (max-width:450px) {
+    
+}

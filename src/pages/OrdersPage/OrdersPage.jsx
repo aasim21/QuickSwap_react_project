@@ -19,7 +19,7 @@ const OrdersPage = () => {
         setItems(val.docs);
       });
     }
-  }, [fireBase]);
+  }, [fireBase.isLoggedIn]);
 
   if(!fireBase.isLoggedIn) return (<h1>Please LogIn....</h1>);
 

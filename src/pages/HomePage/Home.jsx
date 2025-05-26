@@ -22,8 +22,7 @@ const HomePage = () => {
       fireBase.listAllItems().then((items) => {
         setItems(items.docs);
       });
-    }
-    else{
+    } else {
       navigate("/auth/login");
     }
   }, [fireBase.isLoggedIn]);

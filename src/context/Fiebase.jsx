@@ -98,7 +98,6 @@ const getItemById = async (id) => {
 
 const FirebaseProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [placed_orders, setPlaced_orders] = useState(null);
   const [orders, setOrders] = useState(null);
   //Handling User State
   useEffect(() => {
@@ -177,7 +176,7 @@ const FirebaseProvider = ({ children }) => {
     const id = await getUserDBId(userID);
     const collectionRef = collection(fireStore, "users", id, "placed_orders");
     const result = await getDocs(collectionRef);
-    setPlaced_orders(result.docs);
+   return result.docs;
   };
 
   //Deleting a placed_order by id
@@ -284,7 +283,6 @@ const FirebaseProvider = ({ children }) => {
         handleNewPlacedOrder,
         getPlacedOrders,
         handledeleteplaced_order,
-        placed_orders,
         orders,
         checkingConstraint,
         handleOrderRejection,
