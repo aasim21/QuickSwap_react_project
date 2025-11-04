@@ -56,15 +56,21 @@
 }
 
 
-
-.btn{
-    font-size:1.1rem;
-    font-weight:500;
-}
-
 .field{
     width:100%;
     height:3.2rem;
     margin-top:20px;
     position:relative;
+}
+
+.btn{
+    font-size:1.1rem;
+    font-weight:500;
+    border:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:100%;
+    border-radius: 1rem;
 }

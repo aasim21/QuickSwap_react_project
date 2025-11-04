@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  sendEmailVerification
 } from "firebase/auth";
 import { useState, useEffect } from "react";
 import {
@@ -41,12 +42,23 @@ const fireStore = getFirestore(firebaseApp);
 export const useFirebase = () => useContext(FirebaseContext);
 
 //Handling Signing Up a User
-const signingupUser = (email, password, firstName, lastName) => {
-  createUserWithEmailAndPassword(firebaseAuth, email, password).then(
-    ({ user }) => {
-      handleCreateNewUser(user.email, user.uid, firstName, lastName);
-    }
-  );
+const signingupUser = async (email, password, firstName, lastName) => {
+  try {
+    const { user } = await createUserWithEmailAndPassword(firebaseAuth, email, password);
+
+    // ✅ Send verification email
+    await sendEmailVerification(user);
+
+    // ✅ Create user database record
+    await handleCreateNewUser(user.email, user.uid, firstName, lastName);
+
+    alert("Verification email sent. Please verify your Gmail.");
+
+    await signOut(firebaseAuth);
+
+  } catch (error) {
+    console.log("Signup error:", error);
+  }
 };
 
 //Creating dataBase for a User after signing up
@@ -56,26 +68,27 @@ const handleCreateNewUser = async (userEmail, userId, userfirstName, userlastNam
     userEmail,
     userId,
     userfirstName,
-    userlastName
+    userlastName,
   });
-  // console.log(userEmail, userId, userfirstName, userlastName);
+  //  console.log(res);
 };
 
 //Handling Logging in a User
-const LoginUser = (email, password) => {
-  signInWithEmailAndPassword(firebaseAuth, email, password)
-    .then((result) => {
-      // console.log(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+const LoginUser = async (email, password) => {
+  try{
+   const {user} = await signInWithEmailAndPassword(firebaseAuth, email, password);
+   if(!user.emailVerified) {
+    alert("Verfiy your email before logging in");
+    return;
+  }
+  }catch (error){
+    alert(`${error.code}`);
+  }  
 };
 
 //Handling Signout a User
 const signOutUser = () => {
   signOut(firebaseAuth).then((val) => {
-    // console.log("Signed out", val);
   });
 };
 
@@ -101,11 +114,20 @@ const FirebaseProvider = ({ children }) => {
   const [orders, setOrders] = useState(null);
   //Handling User State
   useEffect(() => {
-    onAuthStateChanged(firebaseAuth, (user) => {
-      // console.log("onAuth initiated");
-      if (user) setUser(user);
-      else setUser(null);
-    });
+    return onAuthStateChanged(firebaseAuth, async (user) => {
+      if (!user) {
+      setUser(null);
+      return;
+    }
+
+    // Refresh verification status
+    await user.reload();
+
+    if (user.emailVerified) {
+      setUser(user);   // ✅ Only verified users are allowed in
+      return;
+    }
+  });
   }, []);
   const isLoggedIn = user ? true : false;
   // console.log("isLoggedIn", isLoggedIn);
