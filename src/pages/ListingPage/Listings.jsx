@@ -4,12 +4,13 @@ import Form from 'react-bootstrap/Form';
 import Nav from '../../components/Navbar/Nav';
 
 //Hooks
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useFirebase } from '../../context/Fiebase';
 import { useNavigate } from 'react-router-dom';
 
 
 const Listings = () =>{
+  const [Loading, setIsLoading] = useState(false);
   //Using Context
   const fireBase = useFirebase();
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const Listings = () =>{
   //Handling Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const title = titleRef.current.value;
     const desc = descRef.current.value;
     const price = priceRef.current.value;
@@ -49,12 +51,12 @@ const Listings = () =>{
         <Form.Control  ref = {titleRef} type="text" placeholder="Enter Title here" />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="formBasicPassword1">
         <Form.Label>Enter Description</Form.Label>
         <Form.Control type="text-box" ref = {descRef} placeholder="Explain your Listing" />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="formBasicPassword2">
         <Form.Label>Enter Price</Form.Label>
         <Form.Control type="number" ref = {priceRef} placeholder="Enter your price" />
       </Form.Group>
@@ -65,7 +67,7 @@ const Listings = () =>{
       <div style = {{display:"flex",
                      gap: "1rem"
                   }}>
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" disabled = {Loading}>
         Add your Listing
       </Button>
       <a href = "https://imgur.com/upload" target = "_blank">
