@@ -149,7 +149,7 @@ const FirebaseProvider = ({ children }) => {
 
   //Fetching Orders by itemID
   const getOrders = async (itemID) => {
-    console.log("Get orders initiated");
+    // console.log("Get orders initiated");
     const collectionRef = collection(fireStore, "items", itemID, "orders");
     const result = await getDocs(collectionRef);
     setOrders(result.docs);
@@ -288,7 +288,7 @@ const FirebaseProvider = ({ children }) => {
     return result;
   };
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <FirebaseContext.Provider
