@@ -20,7 +20,7 @@ const CardComp = (props) => {
             <p className={styles.desc}>{props.desc}</p>
           </div>
           <div className={styles.price_container}>
-            <p className={styles.price}>&#x20B9; {props.price}</p>
+            <p className={styles.price}>&#x20B9; {Number(props.price).toLocaleString("en-IN")}</p>
           </div>
         </div>
       </div>

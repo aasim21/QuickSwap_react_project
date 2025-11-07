@@ -61,14 +61,16 @@ img {
 }
 .price_container {
   text-align: right;
+  display: flex;
+  justify-content: flex-end;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  width:37%;
   font-size: 1.3rem;
+  overflow:hidden;
 }
 .price {
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  line-clamp: 1;
-  -webkit-box-orient: vertical;
+  width:100%;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }

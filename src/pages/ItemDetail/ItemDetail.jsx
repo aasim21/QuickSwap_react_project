@@ -72,8 +72,8 @@ const ItemDetail = () => {
           <h3 className={styles.title}>{data.title}</h3>
           <p className={styles.description}>{data.desc}</p>
           <p className={styles.price}>
-            <span>&#8377;</span>
-            {data.price}
+            <span>&#8377;</span>&nbsp;
+            {Number(data.price).toLocaleString("en-IN")}
           </p>
           <div className={styles.owner_details}>
             <h5>Owner Details: </h5>
