@@ -85,6 +85,10 @@ img {
   cursor: pointer;
 }
 
+.btn:hover{
+  background-color: #F564A9;
+}
+
 @media screen and (max-width: 550px) {
   .product_title {
     font-size: 1.1rem;

@@ -52,18 +52,17 @@ const ItemDetail = () => {
     <div className={styles.main_container}>
       <Nav />
       <div className={styles.main_container_child}>
-        <div className={styles.img_container}>
-          <img
-            className={styles.item_img}
-            src={data.imageURL}
-            alt="Item Photo"
-          />
+        <div className={styles.left_box}>
+          <div className={styles.img_container}>
+            <img
+              className={styles.item_img}
+              src={data.imageURL}
+              alt="Item Photo"
+            />
+          </div>
           <div className={styles.btn_container}>
             {data.userID !== fireBase.user.uid && data.isSold !== true && (
-              <button
-                onClick={handleBuyNow}
-                className={styles.buy_btn}
-              >
+              <button onClick={handleBuyNow} className={styles.buy_btn}>
                 Buy Now
               </button>
             )}
@@ -84,16 +83,13 @@ const ItemDetail = () => {
             >
               Seller Email:
             </label>
-            <p id="userEmail" className={styles.owner}>
+            <a target="_blank" href = {`mailto:${data.userEmail}`} id="userEmail" className={styles.owner}>
               {data.userEmail}
-            </p>
+            </a>
           </div>
-           <div className={styles.btn_info_container}>
+          <div className={styles.btn_info_container}>
             {data.userID !== fireBase.user.uid && data.isSold !== true && (
-              <button
-                onClick={handleBuyNow}
-                className={styles.buy_btn}
-              >
+              <button onClick={handleBuyNow} className={styles.buy_btn}>
                 Buy Now
               </button>
             )}

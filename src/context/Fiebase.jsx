@@ -44,6 +44,7 @@ export const useFirebase = () => useContext(FirebaseContext);
 //Handling Signing Up a User
 const signingupUser = async (email, password, firstName, lastName) => {
   try {
+
     const { user } = await createUserWithEmailAndPassword(firebaseAuth, email, password);
 
     // ✅ Send verification email
@@ -57,7 +58,8 @@ const signingupUser = async (email, password, firstName, lastName) => {
     await signOut(firebaseAuth);
 
   } catch (error) {
-    console.log("Signup error:", error);
+    
+    alert(error.code);
   }
 };
 
