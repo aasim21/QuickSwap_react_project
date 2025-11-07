@@ -11,6 +11,7 @@ import Nav from "../../components/Navbar/Nav";
 
 //Functional Component
 const ItemDetail = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const params = useParams();
   const fireBase = useFirebase();
   const [data, setData] = useState(null);
@@ -30,7 +31,9 @@ const ItemDetail = () => {
 
   //Handling Buy Now
   const handleBuyNow = async () => {
-    const hasPurchased = await fireBase.checkingConstraint(
+    try{
+      setIsLoading(true);
+      const hasPurchased = await fireBase.checkingConstraint(
       params.itemID,
       fireBase.user.uid
     );
@@ -44,6 +47,11 @@ const ItemDetail = () => {
       );
       navigate("/items/placedorders");
     } else alert("You have already requested a purchase on this item.");
+  }catch(error){
+    alert(error.code);
+  }finally{
+    setIsLoading(false);
+  }
   };
   // console.log(data);
   if (data == null) return <h1>Loading....</h1>;
@@ -62,7 +70,7 @@ const ItemDetail = () => {
           </div>
           <div className={styles.btn_container}>
             {data.userID !== fireBase.user.uid && data.isSold !== true && (
-              <button onClick={handleBuyNow} className={styles.buy_btn}>
+              <button onClick={handleBuyNow} className={styles.buy_btn} disabled = {isLoading}>
                 Buy Now
               </button>
             )}
@@ -89,7 +97,7 @@ const ItemDetail = () => {
           </div>
           <div className={styles.btn_info_container}>
             {data.userID !== fireBase.user.uid && data.isSold !== true && (
-              <button onClick={handleBuyNow} className={styles.buy_btn}>
+              <button onClick={handleBuyNow} className={styles.buy_btn} disabled ={isLoading}>
                 Buy Now
               </button>
             )}

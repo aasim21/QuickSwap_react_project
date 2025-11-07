@@ -1,7 +1,9 @@
+
 .main_container{
     width:100vw;
     height:100vh;
     overflow-x:hidden;
+    position:relative;
 }
 
 .items_div_main{

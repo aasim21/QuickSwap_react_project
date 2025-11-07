@@ -3,6 +3,8 @@
     background-color: #03045e;
     height:4rem;
     display:flex;
+    position: sticky;
+    bottom: 0px;
     align-items:center;
     justify-content: center;
     gap:1.3rem;
