@@ -9,13 +9,14 @@ import HomePage from './pages/HomePage/Home';
 import ItemDetail from './pages/ItemDetail/ItemDetail';
 import ViewOrderDetails from './pages/ViewOrderDetails/ViewOrderDetails';
 import PlacedOrdersPage from './pages/PlacedOrders/PlacedOrders';
+import OrdersPage from './pages/OrdersPage/OrdersPage';
+import SignUp from './pages/SignUp/SignUp';
+import Auth from './pages/AuthPage/Auth';
+
 
 //CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
-import OrdersPage from './pages/OrdersPage/OrdersPage';
-import SignUp from './pages/SignUp/SignUp';
-import Auth from './pages/AuthPage/Auth';
 
 
 function App() {

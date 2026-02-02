@@ -1,17 +1,18 @@
 
 .main_container{
-    width:100vw;
-    height:100vh;
+    width:100%;
+    min-height:100vh;
     overflow-x:hidden;
-    position:relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .items_div_main{
     width:100%;
-    height:auto;
     padding:1rem 2rem;
     /* border:1px solid black; */
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    flex:1 !important; 
 }
 
 .items_div_heading{
